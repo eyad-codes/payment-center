@@ -1,0 +1,20 @@
+payment-center/
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── payment-card.tsx
+│   └── copy-button.tsx
+│
+├── data/
+│   └── payment-methods.ts
+│
+├── public/
+│   └── logo.svg
+│
+├── package.json
+├── postcss.config.mjs
+├── tsconfig.json
+└── next-env.d.ts

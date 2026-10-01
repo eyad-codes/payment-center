@@ -1,69 +1,227 @@
-import Image from "next/image";
+import {
+  ShieldCheck,
+  ArrowDown,
+} from "lucide-react";
 
-export default function Home() {
+import PaymentCard from "@/components/payment-card";
+
+import { paymentMethods } from "@/data/payment-methods";
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen px-4 py-6 sm:px-6 sm:py-10">
+
+      <div className="mx-auto w-full max-w-2xl">
+
+        {/* =====================================
+            HERO
+        ====================================== */}
+
+        <section
+          className="
+            relative
+            overflow-hidden
+            rounded-[32px]
+            border
+            border-white/[0.08]
+            bg-[#0b1118]
+            px-6
+            py-10
+            text-center
+            shadow-[0_30px_100px_rgba(0,0,0,0.35)]
+            sm:px-10
+            sm:py-12
+          "
+        >
+          {/* Glow */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-0
+              size-72
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-white/[0.04]
+              blur-3xl
+            "
+          />
+
+          {/* Logo */}
+
+          <div
+            className="
+              relative
+              mx-auto
+              flex
+              size-20
+              items-center
+              justify-center
+              rounded-[25px]
+              bg-white
+              text-3xl
+              font-black
+              text-black
+              shadow-[0_15px_50px_rgba(255,255,255,0.08)]
+            "
+          >
+            P
+          </div>
+
+          {/* Label */}
+
+          <p
+            dir="ltr"
+            className="
+              mt-6
+              text-[10px]
+              font-bold
+              tracking-[0.28em]
+              text-white/30
+              sm:text-xs
+            "
+          >
+            DEVELOPER PAYMENT CENTER
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          {/* Title */}
+
+          <h1
+            className="
+              mt-4
+              text-3xl
+              font-black
+              tracking-tight
+              text-white
+              sm:text-4xl
+            "
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+            بيانات الدفع الآمنة
+          </h1>
+
+          {/* Description */}
+
+          <p
+            className="
+              mx-auto
+              mt-4
+              max-w-md
+              text-sm
+              leading-7
+              text-white/40
+            "
+          >
+            اختر وسيلة الدفع المناسبة واضغط على
+            نسخ لنسخ البيانات المطلوبة مباشرة.
+          </p>
+
+          {/* Secure badge */}
+
+          <div
+            className="
+              mx-auto
+              mt-7
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-white/[0.07]
+              bg-white/[0.03]
+              px-4
+              py-2
+              text-xs
+              font-medium
+              text-white/45
+            "
+          >
+            <ShieldCheck size={15} />
+
+            دفع آمن
+          </div>
+        </section>
+
+        {/* =====================================
+            NOTICE
+        ====================================== */}
+
+        <section
+          className="
+            mt-5
+            rounded-2xl
+            border
+            border-emerald-400/15
+            bg-emerald-400/[0.05]
+            px-5
+            py-4
+            text-sm
+            leading-7
+            text-emerald-100/70
+          "
+        >
+          <strong className="text-emerald-300">
+            تنبيه الدفع:
+          </strong>{" "}
+          بعد إتمام عملية الدفع، يرجى إرسال إيصال
+          التحويل إلى المطور للتأكد من العملية.
+        </section>
+
+        {/* =====================================
+            PAYMENT METHODS
+        ====================================== */}
+
+        <section className="mt-6 space-y-5">
+
+          {paymentMethods.map((payment) => (
+            <PaymentCard
+              key={payment.id}
+              payment={payment}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          ))}
+
+        </section>
+
+        {/* =====================================
+            FOOTER
+        ====================================== */}
+
+        <footer className="px-4 py-10 text-center">
+
+          <p
+            className="
+              text-xs
+              leading-6
+              text-white/25
+            "
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            يرجى التأكد من بيانات المستفيد
+            <br />
+            قبل إجراء التحويل.
+          </p>
+
+          <div
+            className="
+              mx-auto
+              mt-5
+              flex
+              size-8
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/[0.06]
+              text-white/20
+            "
+          >
+            <ArrowDown size={14} />
+          </div>
+
+        </footer>
+
+      </div>
+    </main>
   );
 }
